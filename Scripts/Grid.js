@@ -101,5 +101,29 @@ export default class Grid{
         return true
     }
 
-    
+    CountScore()
+    {
+        const scorePerCell = 100;
+        let score = 0;
+
+        for (let x = 0; x < this.size; x++)
+        {
+            for (let y = 0; y < this.size; y++)
+            {
+                let cell = this.grid[x][y];
+                if(cell.hasFlag)
+                {
+                    if(cell.hasBomb)
+                    {
+                        score += scorePerCell;
+                    }
+                    else
+                    {
+                        score -= scorePerCell/2;
+                    }
+                }
+            }
+        }
+        return score;
+    }
 }

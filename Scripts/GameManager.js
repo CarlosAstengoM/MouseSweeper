@@ -136,8 +136,8 @@ export default class GameManager
             this.boardVisualizer = new BoardVisualizer(this.grid);
 
             this.UpdateUI();
+            this.UpdateTimer();
             this.StopTimer();
-            this.StartTimer();
         });
 
         this.popUp.addEventListener("click", event =>
@@ -167,6 +167,7 @@ export default class GameManager
     Lose()
     {
         this.boardVisualizer.ShowMines();
+        this.CalculateScore();
         this.LosePopUp();
         this.StopTimer();
         this.gameEnded = true;
@@ -175,6 +176,7 @@ export default class GameManager
     Win()
     {
         this.boardVisualizer.ShowMines();
+        this.CalculateScore();
         this.WinPopUp();
         this.StopTimer();
         this.gameEnded = true;
@@ -203,7 +205,6 @@ export default class GameManager
     {
         window.clearInterval(this.timer);
         this.currentTimer = 0;
-        this.UpdateTimer();
     }
 
     Debug()
@@ -229,5 +230,10 @@ export default class GameManager
         markup += `<p>It took you ${this.currentTimer} seconds to finish</p>`;
         this.popUp.innerHTML = markup;
         this.popUp.showModal();
+    }
+
+    CalculateScore()
+    {
+        this.score = this.grid.CountScore() - this.currentTimer;
     }
 }

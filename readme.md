@@ -1,19 +1,19 @@
 
 
 
-###**PGxx Ty Course Name Assignment Name**
+**PG23-T1 Intro to Programming in HTML5 & JavaScript Carlos A3: HTML5 Game App**
 ----------
-< Description of what my project does - edit and replace this line >
-[demo](http://dev.pgwm.vfs.local/apps/myApp) | [tutorial](link)
+In MouseSweeper, you play as a mouse living in vfs and have to find and avoid 
+all the mousetraps that where left in your way to the kitchen.
 
-####**Download/Install**
+**Download/Install**
 ---------
- - Browse to demo link
- - [Download Zip](link to zip)
- - \\VFS_Depot\Programming\PGxx\pgXXusername\apps\myapp
- - URL or Full path in perforce or BitBucket
+ - Clone the following repo: https://github.com/CarlosAstengoM/MouseSweeper.git
 
-####**How to use**
+**How to use**
 --------
-< Instructions on how to use the app - edit and replace this line >
+Open in VSCode and run with LiveServer
+Right-Click to place a flag
+Left-Click to select square
+Konami code to debug mode(up,up,down,down,left,right,left,right,b,a,enter) or just use enter if you don't want to feel cool
 
