@@ -1,0 +1,160 @@
+/* Copyright(c) Carlos Astengo 2022, All rights reserved  */
+
+nav
+{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+    padding: 20px;
+}
+
+a
+{
+    color: white;
+    font-size: 20px;
+}
+
+body
+{
+    margin: 0px;
+}
+
+footer
+{
+    padding: 10px 0px 10px 0px;
+    background-color: black;
+    font-size: medium;
+    text-align: center;
+    color: white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+td
+{
+    font-family:"Signika";
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 1px 1.5px #888888;
+    padding: 1px;
+    
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+@font-face 
+{
+    font-family: Geostar;
+    src: url(../Fonts/GeostarFill-Regular.ttf);
+}
+
+h1
+{
+    margin: 0.5rem;
+}
+
+dialog
+{
+    background-color: bisque;
+    font-size: 1.25rem;
+    padding: 20px 60px 20px 60px;
+    text-align: center;
+}
+
+.MainArea
+{
+    display: flex;
+    height: 90vh;
+    
+    background-color: rgb(190, 68, 68);
+    background-image: url(/Images/BreakRoom.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.GameArea
+{
+    margin: auto;
+    margin-top: 15px;
+}
+
+.MainTitle
+{
+    display: flex;
+    justify-content: center;
+    font-family: 'Indie Flower', cursive;
+    font-size: 2rem;
+}
+
+.GameBoard
+{
+    background-color: gray;
+    border: 3px solid black;
+}
+
+.UI
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+    background-color: aliceblue;
+    border-bottom: 3px solid black;
+}
+
+.Counter
+{
+    display: flex;
+    justify-content: center;
+    font-family: Geostar, sans-serif;
+    color: red;
+    background-color: black;
+    padding: 5px;
+    width: 50px;
+}
+
+.Btn
+{
+    border: none;
+    background-color: transparent;
+}
+
+.Clicked
+{
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+}
+
+.Incorrect
+{
+    background-color: red;
+}
+
+.Correct
+{
+    background-color: green;
+}
+
+#mineBoard
+{
+    padding: 10px;
+}
+
+#RestartBtn{
+    width: 3.5em;
+    height: 3em;
+    transition-duration: .3s;
+    cursor: pointer;
+}
+
+#RestartBtn:hover{
+    width: 4.5em;
+    height: 4em;
+}

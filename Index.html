@@ -1,0 +1,72 @@
+<!-- Copyright(c) Carlos Astengo 2022, All rights reserved  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Minesweeper PG23 Carlos</title>
+    <link rel="stylesheet" href="Css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <a href="https://www.wikihow.com/Play-Minesweeper"> How To</a>
+        <a href="https://en.wikipedia.org/wiki/Minesweeper_(video_game)"> About</a>
+    </nav>
+    
+    <div class="MainArea">
+        <div class="GameArea" oncontextmenu="return false;">
+            <header class="MainTitle">
+                <h1> Minesweeper </h1>
+            </header>
+
+            <div class="GameBoard">
+                
+                <div class="UI">
+                    <div>
+                        <div class="Counter" id="mineCounter">
+                            999
+                        </div>
+                    </div> 
+
+                    <div>
+                        <button class="Btn">
+                            <img id="RestartBtn" src="./Images/RatHead.png" alt="Rat Head"/>
+                        </button>
+                    </div>
+
+                    <div >
+                        <div class="Counter" id="timeCounter">
+                            000
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <dialog id="popUp">
+
+                </dialog>
+
+                <div id="mineBoard">
+                    
+                </div>
+
+            </div>
+    </div>
+        
+
+    </div>
+
+    <footer>
+        Copyright (c) 2022 Carlos Astengo Macias, All rights reserved
+    </footer>
+
+    <script type="module" src="./Scripts/main.js">
+
+    </script>
+</body>
+
+</html>
