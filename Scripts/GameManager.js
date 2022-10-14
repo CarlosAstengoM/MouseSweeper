@@ -1,3 +1,5 @@
+//Copyright(c) Carlos Astengo 2022, All rights reserved
+
 import Grid from "./Grid.js";
 import BoardVisualizer from "./BoardVisualizer.js";
 
@@ -13,17 +15,26 @@ export default class GameManager
         this.currentMines = mines;
         this.currentTimer = 0;
         this.score = 0;
+
         this.grid = new Grid(size, mines);
         this.boardVisualizer = new BoardVisualizer(this.grid);
+
         this.mineCounter = document.getElementById("mineCounter");
         this.timeCounter = document.getElementById("timeCounter");
         this.popUp = document.getElementById("popUp");
 
         this.UpdateUI();
         this.UpdateTimer();
+        this.AddEventListeners();
+        
+    }
 
+    AddEventListeners()
+    {
+        //Left-click
         document.getElementById("mineBoard").addEventListener("click",event =>
         {
+            //Don`t continue if game is over
             if(this.gameEnded)
             {
                 return;
@@ -32,11 +43,13 @@ export default class GameManager
             const x = parseInt(event.target.dataset.x);
             const y = parseInt(event.target.dataset.y);
 
+            //When pressed in the space between cells it returns NaN
             if(isNaN(x) || isNaN(y))
             {
                 return;
             }
             
+            //Check if its within grid range
             if(x < 0 || x >= this.grid.size || y < 0 || y >= this.grid.size)
             {
                 return;
@@ -44,9 +57,11 @@ export default class GameManager
 
             let cell = this.grid.grid[x][y];
 
+            //First click is different than the rest
             if(this.firstClick )
             {
                 this.firstClick = false
+                //Make sure first click is never a bomb
                 if(cell.hasBomb)
                 {
                     while(cell.hasBomb)
@@ -60,28 +75,31 @@ export default class GameManager
                 this.StartTimer();
             }
 
+            //Don't click flagged 
             if(cell.hasFlag)
             {
                 return;
             }
-
+            //If its a bomb you lose
             if(cell.hasBomb)
             {
                 this.Lose();
                 return;
             }
-
+            //If not reveal it and try to reveal neighbors
             this.boardVisualizer?.Reveal(x,y);
             if(cell.neighborBombCount == 0)
             {
                 this.boardVisualizer?.RevealNeighbors(x,y);
             }
-
+            //Check if you won
             this.CheckGameState();
         })
 
+        //Right click
         document.addEventListener('contextmenu', event => 
         {
+            //Don't allow to click if the game has ended or right-click as your first move
             if(this.gameEnded || this.firstClick)
             {
                 return;
@@ -89,24 +107,25 @@ export default class GameManager
             
             const x = parseInt(event.target.dataset.x);
             const y = parseInt(event.target.dataset.y);
-            
+
+            //When pressed in the space between cells it returns NaN
             if(isNaN(x) || isNaN(y))
             {
                 return;
             }
-            
+            //Check if its within grid range
             if(x < 0 || x >= this.grid.size || y < 0 || y >= this.grid.size)
             {
                 return;
             }
 
             const cell = this.grid.grid[x][y];
-
+            //Can't flagged already shown items
             if(cell.revealed)
             {
                 return;
             }
-
+            //Toggle between flagging and removing flag
             if(cell.hasFlag)
             {
                 this.currentMines++;
@@ -121,10 +140,11 @@ export default class GameManager
                 this.currentMines--;
                 this.boardVisualizer.Flag(x,y);
             }
-
+            //Check if you won
             this.CheckGameState();
         })
 
+        //Resets all variables
         document.getElementById("RestartBtn").addEventListener("click", () => 
         {
             this.firstClick = true;
@@ -139,17 +159,17 @@ export default class GameManager
             this.UpdateTimer();
             this.StopTimer();
         });
-
+        //Close after any click on the screen
         this.popUp.addEventListener("click", event =>
         {
             this.popUp.close();
         });
-
+        //Debug mode
         document.addEventListener('keypress', event =>
         {
             if (event.key == 'Enter') 
             {
-                this.Debug();
+                this.boardVisualizer.Debug();
             }
         });
     }
@@ -207,11 +227,7 @@ export default class GameManager
         this.currentTimer = 0;
     }
 
-    Debug()
-    {
-        this.boardVisualizer.Debug();
-    }
-
+    //Write win message on the dialogue tag
     WinPopUp()
     {
         let markup = "";
@@ -222,12 +238,13 @@ export default class GameManager
         this.popUp.showModal();
     }
 
+    //Write lose message on the dialogue tag
     LosePopUp()
     {
         let markup = "";
         markup += "<p>You Lost</p>";
         markup += `<p>Your Score is ${this.score}</p>`;
-        markup += `<p>It took you ${this.currentTimer} seconds to finish</p>`;
+        markup += `<p>It took you ${this.currentTimer} seconds to lose</p>`;
         this.popUp.innerHTML = markup;
         this.popUp.showModal();
     }

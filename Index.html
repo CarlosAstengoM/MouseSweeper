@@ -18,6 +18,7 @@
     
     <div class="MainArea">
         <div class="GameArea" oncontextmenu="return false;">
+            
             <header class="MainTitle">
                 <h1> Minesweeper </h1>
             </header>
@@ -26,9 +27,7 @@
                 
                 <div class="UI">
                     <div>
-                        <div class="Counter" id="mineCounter">
-                            999
-                        </div>
+                        <div class="Counter" id="mineCounter">999</div>
                     </div> 
 
                     <div>
@@ -38,26 +37,18 @@
                     </div>
 
                     <div >
-                        <div class="Counter" id="timeCounter">
-                            000
-                        </div>
+                        <div class="Counter" id="timeCounter">000</div>
                     </div>
+
                 </div>
 
+                <dialog id="popUp"> <!--JS will create the popUp--> </dialog>
 
-
-                <dialog id="popUp">
-
-                </dialog>
-
-                <div id="mineBoard">
-                    
-                </div>
+                <div id="mineBoard"> <!--JS will create Board--> </div>
 
             </div>
-    </div>
-        
-
+            
+        </div>
     </div>
 
     <footer>

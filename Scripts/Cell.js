@@ -1,3 +1,4 @@
+//Copyright(c) Carlos Astengo 2022, All rights reserved
 
 export default class Cell
 {

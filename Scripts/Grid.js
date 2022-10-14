@@ -1,3 +1,5 @@
+//Copyright(c) Carlos Astengo 2022, All rights reserved
+
 import Cell from "./Cell.js";
 
 export default class Grid{
@@ -24,6 +26,7 @@ export default class Grid{
         }
     }
 
+    //Place bombs in the grid
     PopulateGrid()
     {
         let x = Math.floor(Math.random()*this.size);
@@ -57,11 +60,12 @@ export default class Grid{
         {
             for (let j = -1; j <= 1; j++)
             {
+                //Inside the range of the grid
                 if(x+i < 0 || x+i >= this.size || y+j < 0 || y+j >= this.size)
                 {
                     continue
                 }
-
+                //Skips counting itself
                 if(i == 0 && j == 0)
                 {
                     continue;
@@ -76,6 +80,7 @@ export default class Grid{
         this.grid[x][y].neighborBombCount = count;
     }
 
+    //Checks if all bombs have been flagged and all non-bomb tiles are revealed
     HasWon()
     {
         for (let x = 0; x < this.size; x++)
@@ -84,6 +89,7 @@ export default class Grid{
             {
                 if(this.grid[x][y].hasBomb)
                 {
+                    //A bomb is not flagged
                     if(!this.grid[x][y].hasFlag)
                     {
                         return false;
@@ -91,6 +97,7 @@ export default class Grid{
                 }
                 else
                 {
+                    //A non-bomb cell is not revealed
                     if(!this.grid[x][y].revealed)
                     {
                         return false;
